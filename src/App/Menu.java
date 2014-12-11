@@ -8,7 +8,6 @@ package App;
 import BE.BEPlaylist;
 import BE.BESong;
 import BLL.*;
-import DALC.DalcSong;
 import java.util.Scanner;
 
 /**
@@ -21,6 +20,10 @@ public class Menu {
 
     private static Menu m_instance;
 
+    /**
+     *
+     * @return
+     */
     static public Menu getInstance() {
         if (m_instance == null) {
             m_instance = new Menu();
@@ -48,8 +51,8 @@ public class Menu {
         }
     };
 
-     /**
-     * 
+    /**
+     *
      * @void prints out the main menu
      */
     private void show() {
@@ -74,66 +77,74 @@ public class Menu {
         executeMenu(MenuItem.values()[choice - 1]);
 
     }
-    
-     /**
-     * 
+
+    /**
+     *
      * @void prints out the song edit menu and executes the menu
      */
-    private void editMenu(){
-        
-            System.out.println("1. |Create a song|");
-            System.out.println("2. |Delete a song|");
-            int option = 0;
-            option = new Scanner(System.in).nextInt();
-            switch(option){
-                case 1:
-                    createSong();
-                    break;
-                case 2:
-                    deleteSong();
-                    break;
-            }          
+    private void editMenu() {
+
+        System.out.println("1. |Create a song|");
+        System.out.println("2. |Delete a song|");
+        System.out.println("0. |Return|");
+        int option = 0;
+        option = new Scanner(System.in).nextInt();
+        switch (option) {
+            case 1:
+                createSong();
+                break;
+            case 2:
+                deleteSong();
+                break;
+            case 0:
+                show();
+                break;
+        }
     }
-    
-     /**
-     * 
+
+    /**
+     *
      * @void prints out the playlist menu and executes the menu
      */
-    private void playlistMenu(){
-            System.out.println("           Playlists Menu          ");
-            System.out.println("   --------------------------------");
-            System.out.println("1. |Show all playlists            |");
-            System.out.println("2. |Show songs in a playlist      |");
-            System.out.println("3. |Create a playlist             |");
-            System.out.println("4. |Delete a playlist             |");
-            System.out.println("5. |Delete a song from a playlist |");
-            System.out.println("6. |Return                        |");
-            int option = 0;
-            option = new Scanner(System.in).nextInt();
-            switch(option){
-                case 1:
-                    showPlaylists();
-                    break;
-                case 2:
-                    getAllByPlaylist();
-                    break;
-                case 3:
-                    createPlaylist();
-                    break;
-                case 4:
-                    deletePlaylist();
-                    break;
-                case 5:
-                    deleteFromPlaylist();
-                    break;
-                case 6:
-                    show();
-                    break;
-            }          
+    private void playlistMenu() {
+        System.out.println("           Playlists Menu          ");
+        System.out.println("   --------------------------------");
+        System.out.println("1. |Show all playlists            |");
+        System.out.println("2. |Show songs in a playlist      |");
+        System.out.println("3. |Create a playlist             |");
+        System.out.println("4. |Add song to a playlist        |");
+        System.out.println("5. |Delete a playlist             |");
+        System.out.println("6. |Delete a song from a playlist |");
+        System.out.println("0. |Return                        |");
+        int option = 0;
+        option = new Scanner(System.in).nextInt();
+        switch (option) {
+            case 1:
+                showPlaylists();
+                break;
+            case 2:
+                getAllByPlaylist();
+                break;
+            case 3:
+                createPlaylist();
+                break;
+            case 4:
+                addSongToPlaylist();
+                break;
+            case 5:
+                deletePlaylist();
+                break;
+            case 6:
+                deleteFromPlaylist();
+                break;
+            case 0:
+                show();
+                break;
+        }
     }
-    
- /**
-     * 
+
+    /**
+     *
      * @void executes the main menu
      */
     private void executeMenu(MenuItem value) {
@@ -162,8 +173,8 @@ public class Menu {
         }
     }
 
-     /**
-     * 
+    /**
+     *
      * @void prints out all songs
      */
     public void showSongs() {
@@ -182,8 +193,8 @@ public class Menu {
 
     }
 
-     /**
-     * 
+    /**
+     *
      * @void prints out all playlists
      */
     private void showPlaylists() {
@@ -199,20 +210,20 @@ public class Menu {
             System.out.println("Could not get playlists - " + ex.getMessage());
         }
     }
-    
-     /**
-     * 
+
+    /**
+     *
      * @void prints out all songs in a playlist
      */
-   private void getAllByPlaylist(){
-       try {
-        int searchWord;
-        Scanner keyboard = new Scanner(System.in);
-        System.out.print("Choose one of your ");
-        showPlaylists();
-        searchWord = keyboard.nextInt();
-        BLLSong ds = new BLLSong();
-        System.out.println("Desired playlist: ");
+    private void getAllByPlaylist() {
+        try {
+            int searchWord;
+            Scanner keyboard = new Scanner(System.in);
+            System.out.print("Choose one of your ");
+            showPlaylists();
+            searchWord = keyboard.nextInt();
+            BLLSong ds = new BLLSong();
+            System.out.println("Desired playlist: ");
             for (BESong aSong : ds.getAllByPlaylist(searchWord)) {
                 System.out.println(aSong.getId() + ": " + aSong.getTitle() + ": " + aSong.getArtist());
             }
@@ -220,18 +231,18 @@ public class Menu {
         } catch (Exception ex) {
             System.out.println("Could not get songs - " + ex.getMessage());
         }
-   }
-   
- /**
-     * 
+    }
+
+    /**
+     *
      * @void quits the application
      */
     private void quit() {
         running = false;
     }
 
-     /**
-     * 
+    /**
+     *
      * @void starts the application
      */
     public void run() {
@@ -239,8 +250,9 @@ public class Menu {
             show();
         }
     }
- /**
-     * 
+
+    /**
+     *
      * @void create a new song
      */
     private void createSong() {
@@ -272,16 +284,16 @@ public class Menu {
         }
     }
 
-     /**
-     * 
+    /**
+     *
      * @void starts the sound control menu
      */
     static void soundControl() {
         new SoundControlMenu().run();
     }
 
-     /**
-     * 
+    /**
+     *
      * @void delete a song
      */
     private void deleteSong() {
@@ -298,38 +310,38 @@ public class Menu {
         }
     }
 
-     /**
-     * 
+    /**
+     *
      * @void search all songs
      */
     private void searchSongs() {
         try {
-        String searchWord;
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("Enter search word, either artist or title:  ");
-        searchWord = keyboard.nextLine();
-        BLLSong ds = new BLLSong();
-        System.out.println("Searched song(s): ");
+            String searchWord;
+            Scanner keyboard = new Scanner(System.in);
+            System.out.println("Enter search word, either artist or title:  ");
+            searchWord = keyboard.nextLine();
+            BLLSong ds = new BLLSong();
+            System.out.println("Searched song(s): ");
             for (BESong aSong : ds.searchSongs(searchWord)) {
                 System.out.println(aSong.getId() + ": " + aSong.getTitle() + ": " + aSong.getArtist());
             }
-        System.out.println(" ");
+            System.out.println(" ");
         } catch (Exception ex) {
             System.out.println("Could not get songs - " + ex.getMessage());
         }
     }
 
-     /**
-     * 
+    /**
+     *
      * @void delete a playlist
      */
-    private void deletePlaylist(){
+    private void deletePlaylist() {
         try {
             int id;
             System.out.println("Enter id:    ");
             showPlaylists();
             id = Keyboard.readInt();
-            
+
             BEPlaylist aPlaylist = new BEPlaylist(id);
             BLLPlaylist ds = new BLLPlaylist();
             ds.deletePlaylist(aPlaylist);
@@ -338,17 +350,17 @@ public class Menu {
             System.out.println("Could not delete playlist - " + ex.getMessage());
         }
     }
-    
-     /**
-     * 
+
+    /**
+     *
      * @void create a playlist
      */
-    private void createPlaylist(){
-    try {
+    private void createPlaylist() {
+        try {
             String name;
             System.out.println("Enter name:    ");
             name = Keyboard.readString();
-            
+
             BEPlaylist aPlaylist = new BEPlaylist(name);
             BLLPlaylist ds = new BLLPlaylist();
             ds.createPlaylist(aPlaylist);
@@ -357,9 +369,9 @@ public class Menu {
             System.out.println("Could not create playlist - " + ex.getMessage());
         }
     }
-    
-     /**
-     * 
+
+    /**
+     *
      * @void delete a song from a playlist
      */
     private void deleteFromPlaylist(){
@@ -379,6 +391,30 @@ public class Menu {
 
         } catch (Exception ex) {
             System.out.println("Could not delete song from playlist - " + ex.getMessage());
+        }
+    }
+    
+        /**
+     *
+     * @void add a song to a playlist
+     */
+    private void addSongToPlaylist() {
+        try {
+           int playlistid;
+           int songID;
+            System.out.println("Enter Playlist ID:    ");
+            showPlaylists();
+            playlistid = Keyboard.readInt();
+            System.out.println("Enter Song ID:   ");
+            showSongs();
+            songID = Keyboard.readInt();
+
+            BEPlaylist aPlaylist = new BEPlaylist(playlistid, songID);
+            BLLPlaylist ds = new BLLPlaylist();
+            ds.addSongToPlaylist(aPlaylist);
+
+        } catch (Exception ex) {
+            System.out.println("Could not insert song into playlist - " + ex.getMessage());
         }
     }
 }

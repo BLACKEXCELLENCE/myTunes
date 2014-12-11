@@ -9,11 +9,19 @@ import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 
-
+/**
+ *
+ * @author Christopher
+ */
 public class DBConnection {
     
     private static Connection m_connection = null;
     
+    /**
+     *
+     * @return
+     * @throws SQLServerException
+     */
     public static Connection getConnection() throws SQLServerException
     {
         if (m_connection == null) // first time

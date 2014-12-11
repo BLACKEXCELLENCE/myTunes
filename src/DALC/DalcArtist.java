@@ -11,6 +11,9 @@ package DALC;
  */
 public class DalcArtist {
     
+    /**
+     *
+     */
     public void getArtistName(){
         
     }

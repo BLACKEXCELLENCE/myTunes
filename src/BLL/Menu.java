@@ -22,6 +22,10 @@ public abstract class Menu
 	// value used to exit the menu.
 	// the value can be changed by the sub-class constructor.
 
+    /**
+     *
+     */
+    
 	protected int EXIT_OPTION = 0;
 	// The menu header text
 	private String header;
@@ -125,12 +129,21 @@ public abstract class Menu
 		new Scanner(System.in).nextLine();
 	}
         
-        protected void setMenuText(int idx, String menuText)
+    /**
+     *
+     * @param idx
+     * @param menuText
+     */
+    protected void setMenuText(int idx, String menuText)
         {
             menuItems[idx-1] = menuText;
         }
         
-        protected void setHeader(String newHeader)
+    /**
+     *
+     * @param newHeader
+     */
+    protected void setHeader(String newHeader)
         {  header = newHeader; }
 
 	

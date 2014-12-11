@@ -6,12 +6,9 @@
 package BLL;
 
 import BE.BESong;
-import BE.BEPlaylist;
 import DALC.DalcSong;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,6 +19,9 @@ public class BLLSong {
     DalcSong ds;
     ArrayList<BESong> m_songs;
 
+    /**
+     *
+     */
     public BLLSong() {
         ds = DalcSong.getInstance();
         m_songs = null;
@@ -31,6 +31,7 @@ public class BLLSong {
      /**
      * 
      * @return all songs
+     * @throws java.lang.Exception
      */
     public ArrayList<BESong> getAll() throws Exception {
         try {
@@ -46,7 +47,9 @@ public class BLLSong {
     
      /**
      * 
+     * @param searchWord
      * @return all songs from a playlist
+     * @throws java.lang.Exception
      */
     public ArrayList<BESong> getAllByPlaylist(int searchWord) throws Exception {
         try {
@@ -60,6 +63,8 @@ public class BLLSong {
 
      /**
      * 
+     * @param aSong
+     * @throws java.lang.Exception
      * @void create a new song
      */
     public void createSong(BESong aSong) throws Exception {
@@ -73,6 +78,8 @@ public class BLLSong {
     
      /**
      * 
+     * @param aSong
+     * @throws java.lang.Exception
      * @void delete a song
      */
         public void deleteSong(BESong aSong) throws Exception {
@@ -85,7 +92,9 @@ public class BLLSong {
     
     /**
      * 
+     * @param searchWord
      * @return search songs
+     * @throws java.lang.Exception
      */
     public ArrayList<BESong> searchSongs(String searchWord) throws Exception {
         try {

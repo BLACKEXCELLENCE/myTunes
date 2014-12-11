@@ -1,6 +1,5 @@
 package DALC;
 
-import BE.BEPlaylist;
 import BE.BESong;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
@@ -20,6 +19,10 @@ public class DalcSong {
     
     private static DalcSong m_instance;
     
+    /**
+     *
+     * @return
+     */
     static public DalcSong getInstance()
     {
         if (m_instance == null)
@@ -27,6 +30,9 @@ public class DalcSong {
         return m_instance;
     }
     
+    /**
+     *
+     */
     public DalcSong()
     {
         try {
@@ -36,6 +42,7 @@ public class DalcSong {
     }
     /**
      * @return all the songs
+     * @throws java.sql.SQLException
      */
     public ArrayList<BESong> getAll() throws SQLException
     {   
@@ -66,6 +73,7 @@ public class DalcSong {
      * 
      * @param id
      * @return the song with the id as [id] 
+     * @throws java.sql.SQLException 
      */
     public BESong getById(int id)  throws SQLException
     { 
@@ -77,6 +85,7 @@ public class DalcSong {
     /**
      * @param searchWord
      * @return all the songs at the playlist [pl] 
+     * @throws java.sql.SQLException 
      */
     public ArrayList<BESong> getAllByPlaylist(int searchWord) throws SQLException
     {   
@@ -99,6 +108,8 @@ public class DalcSong {
     }
     /**
      * @param s
+     * @throws com.microsoft.sqlserver.jdbc.SQLServerException
+     * @throws java.sql.SQLException
      * @void create a song
      */
     public void createSong2(BESong s) throws SQLServerException, SQLException
@@ -114,6 +125,8 @@ public class DalcSong {
     }
     /**
      * @param s
+     * @throws com.microsoft.sqlserver.jdbc.SQLServerException
+     * @throws java.sql.SQLException
      * @void create a song
      */
     public void createSong(BESong s) throws SQLServerException, SQLException
@@ -130,6 +143,8 @@ public class DalcSong {
     }   
     /**
      * @param s
+     * @throws com.microsoft.sqlserver.jdbc.SQLServerException
+     * @throws java.sql.SQLException
      * @void delete a song
      */
     public void deleteSong(BESong s) throws SQLServerException, SQLException
@@ -145,6 +160,7 @@ public class DalcSong {
     /**
      * @param searchWord
      * @return search all songs
+     * @throws java.sql.SQLException
      */
     public ArrayList<BESong> searchSongs(String searchWord) throws SQLException
     {   

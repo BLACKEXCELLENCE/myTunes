@@ -7,11 +7,8 @@ package BLL;
 
 import BE.BEPlaylist;
 import DALC.DalcPlaylist;
-import DALC.DalcSong;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,6 +19,9 @@ public class BLLPlaylist {
     DalcPlaylist ds;
     ArrayList<BEPlaylist> m_songs;
 
+    /**
+     *
+     */
     public BLLPlaylist() {
         ds = DalcPlaylist.getInstance();
         m_songs = null;
@@ -31,6 +31,7 @@ public class BLLPlaylist {
      /**
      * 
      * @return all playlists
+     * @throws java.lang.Exception
      */
     public ArrayList<BEPlaylist> getAllPlaylists() throws Exception {
         try {
@@ -44,6 +45,8 @@ public class BLLPlaylist {
     
      /**
      * 
+     * @param aPlaylist
+     * @throws java.lang.Exception
      * @void delete a playlist
      */
     public void deletePlaylist(BEPlaylist aPlaylist) throws Exception {
@@ -56,6 +59,8 @@ public class BLLPlaylist {
     
      /**
      * 
+     * @param aPlaylist
+     * @throws java.lang.Exception
      * @void create a playlist
      */
     public void createPlaylist(BEPlaylist aPlaylist) throws Exception {
@@ -68,6 +73,8 @@ public class BLLPlaylist {
     
      /**
      * 
+     * @param aPlaylist
+     * @throws java.lang.Exception
      * @void delete a song from a playlist
      */
     public void deleteFromPlaylist(BEPlaylist aPlaylist) throws Exception {
@@ -75,6 +82,20 @@ public class BLLPlaylist {
             ds.deleteFromPlaylist(aPlaylist);
         } catch (SQLException ex) {
           throw new Exception("kunne ikke slette sangen fra playlisten " + aPlaylist.getName());
+        }
+    }
+    
+     /**
+     * 
+     * @param aPlaylist
+     * @throws java.lang.Exception
+     * @void add a song to a playlist
+     */
+    public void addSongToPlaylist(BEPlaylist aPlaylist) throws Exception {
+        try {
+            ds.addSongToPlaylist(aPlaylist);
+        } catch (SQLException ex) {
+          throw new Exception("kunne ikke indsætte sangen i playlisten " + aPlaylist.getName());
         }
     }
     

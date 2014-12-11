@@ -18,6 +18,10 @@ public class AudioPlayer {
     private boolean m_errorState; // true means everything is ok
     private String m_errorMessage;
 
+    /**
+     *
+     * @param fileName
+     */
     public AudioPlayer(String fileName)
     {
         m_errorState = true;
@@ -79,13 +83,24 @@ public class AudioPlayer {
         isPlayingNow = false;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public boolean isValid() 
     { return m_errorState; }
     
+    /**
+     *
+     * @return
+     */
     public String getErrorMessage() 
     { return m_errorMessage; }
     
+    /**
+     *
+     * @return
+     */
     public boolean isPlaying()
     { return isPlayingNow; }
 

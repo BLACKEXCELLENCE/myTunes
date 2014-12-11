@@ -19,7 +19,14 @@ public class BESong {
     private String filename;
     private String searchWord;
     
-    
+    /**
+     *
+     * @param id
+     * @param title
+     * @param artist
+     * @param categoryId
+     * @param filename
+     */
     public BESong(int id, 
             String title, 
             String artist, 
@@ -31,10 +38,21 @@ public class BESong {
         this.length = length; this.categoryId = categoryId;
         this.filename = filename;
     }
+
+    /**
+     *
+     * @param id
+     */
     public BESong(int id){
         this.id=id;
     }
     
+    /**
+     *
+     * @param id
+     * @param title
+     * @param artist
+     */
     public BESong(int id,
             String title,
             String artist)
@@ -126,6 +144,10 @@ public class BESong {
         this.filename = filename;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getSearchWord() {
         return searchWord;
     }

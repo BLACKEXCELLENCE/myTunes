@@ -9,8 +9,11 @@ import java.util.Scanner;
 public class SoundControlMenu extends Menu {
 
     AudioPlayer p;
-    final String fileA = "";
+     String fileA = "";
 
+    /**
+     *
+     */
     public SoundControlMenu() {
         super("      Sound Controls",
                 "|Play              |",
@@ -37,6 +40,7 @@ public class SoundControlMenu extends Menu {
                 App.Menu.getInstance().showSongs();
                 System.out.println("Enter song title:");
                 String chooseSong = scanner.nextLine();
+                fileA = chooseSong;
                 chooseSong = chooseSong.replace(" ", "");
                 if (p != null) {
                     p.stop();
@@ -68,7 +72,7 @@ public class SoundControlMenu extends Menu {
                 if (p == null) {
                     System.out.println("No audio player exist...");
                 } else if (p.isPlaying()) {
-                    System.out.println("Playing...");
+                    System.out.println("Now playing " + fileA);
                 } else {
                     System.out.println("NOT playing...");
                 }

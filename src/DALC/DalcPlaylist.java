@@ -1,7 +1,6 @@
 package DALC;
 
 import BE.BEPlaylist;
-import BE.BEPlaylist;
 import static DALC.DBConnection.getConnection;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
@@ -22,6 +21,10 @@ public class DalcPlaylist {
     
     private static DalcPlaylist m_instance;
     
+    /**
+     *
+     * @return
+     */
     static public DalcPlaylist getInstance()
     {
         if (m_instance == null)
@@ -39,6 +42,7 @@ public class DalcPlaylist {
     /**
      * 
      * @return all the playlists
+     * @throws java.sql.SQLException
      */
     public ArrayList<BEPlaylist> getAllPlaylists() throws SQLException
     {   
@@ -57,6 +61,11 @@ public class DalcPlaylist {
         return result;
     }
     
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<BEPlaylist> getAllPlaylists2() throws SQLException
     { 
         Connection c = getConnection();
@@ -94,6 +103,7 @@ public class DalcPlaylist {
      * 
      * @param id
      * @return the song with the id as [id] 
+     * @throws java.sql.SQLException 
      */
     public BEPlaylist getById(int id)  throws SQLException
     { 
@@ -114,6 +124,8 @@ public class DalcPlaylist {
     /**
      * 
      * @param s
+     * @throws com.microsoft.sqlserver.jdbc.SQLServerException
+     * @throws java.sql.SQLException
      * @void delete a playlist
      */
     public void deletePlaylist(BEPlaylist s) throws SQLServerException, SQLException
@@ -130,6 +142,8 @@ public class DalcPlaylist {
     /**
      * 
      * @param s
+     * @throws com.microsoft.sqlserver.jdbc.SQLServerException
+     * @throws java.sql.SQLException
      * @void create a playlist
      */
     public void createPlaylist(BEPlaylist s) throws SQLServerException, SQLException
@@ -145,6 +159,8 @@ public class DalcPlaylist {
     /**
      * 
      * @param s
+     * @throws com.microsoft.sqlserver.jdbc.SQLServerException
+     * @throws java.sql.SQLException
      * @void delete a song from a playlist
      */
         public void deleteFromPlaylist(BEPlaylist s) throws SQLServerException, SQLException
@@ -154,6 +170,26 @@ public class DalcPlaylist {
         PreparedStatement ps = DBConnection.getConnection().prepareStatement(sql);
         ps.setInt(1, s.getId());
         ps.setInt(2, s.getSongid());
+ 
+        ps.executeUpdate();
+    }
+        
+     /**
+     * 
+     * @param s
+     * @throws com.microsoft.sqlserver.jdbc.SQLServerException
+     * @throws java.sql.SQLException
+     * @void add a song to a playlist
+     */
+        public void addSongToPlaylist(BEPlaylist s) throws SQLServerException, SQLException
+    {   
+        String sql = ("INSERT INTO PlayListSong (PlayListID, SongID, SeqNo)"
+                + "values (?, ?, (SELECT ISNULL(Max(SeqNo),0)+1 FROM [dbo].[PlayListSong] WHERE PlayListID=?))"); 
+        
+        PreparedStatement ps = DBConnection.getConnection().prepareStatement(sql);
+        ps.setInt(1, s.getPlaylistid());
+        ps.setInt(2, s.getSongid());
+        ps.setInt(3, s.getPlaylistid());
  
         ps.executeUpdate();
     }
