@@ -13,21 +13,50 @@ public class BEPlaylist {
     private int id;
     private String name;
     private int songid;
+    private int playlistid;
 
+    /**
+     *
+     * @param id
+     * @param name
+     */
     public BEPlaylist(int id, String name)
     { this.id = id; this.name = name; }
     
+    /**
+     *
+     * @param id
+     */
     public BEPlaylist(int id){
         this.id=id;
     }
     
+    /**
+     *
+     * @param name
+     */
     public BEPlaylist(String name){
         this.name=name;
     }
     
-    public BEPlaylist(int id, int songid){
-        this.id=id; this.songid=songid;
+    /**
+     * 
+     * @param playlistid
+     * @param songid 
+     */
+    public BEPlaylist(int playlistid, int songid){
+        this.playlistid=playlistid; this.songid=songid;
     }
+    
+// Kan ikke have 2 int?
+//    /**
+//     *
+//     * @param id
+//     * @param songid
+//     */
+//    public BEPlaylist(int id, int songid){
+//        this.id=id; this.songid=songid;
+//    }
     
     /**
      * @return the id
@@ -69,6 +98,20 @@ public class BEPlaylist {
      */
     public void setSongid(int songid) {
         this.songid = songid;
+    }
+
+    /**
+     * @return the playlistid
+     */
+    public int getPlaylistid() {
+        return playlistid;
+    }
+
+    /**
+     * @param playlistid the playlistid to set
+     */
+    public void setPlaylistid(int playlistid) {
+        this.playlistid = playlistid;
     }
     
 }
