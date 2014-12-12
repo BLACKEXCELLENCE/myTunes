@@ -1,12 +1,13 @@
-package BLL;
+package App;
 
+import BLL.AudioPlayer;
 import java.util.Scanner;
 
 /**
  *
  * @author Christopher, Mark, Martin & Rasmus
  */
-public class SoundControlMenu extends Menu {
+public class SoundControlMenu extends MenuSound {
 
     AudioPlayer p;
     String fileA = "";

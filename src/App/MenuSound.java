@@ -1,4 +1,4 @@
-package BLL;
+package App;
 
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ import java.util.Scanner;
  * constructor.
  *
  */
-public abstract class Menu {
+public abstract class MenuSound {
 	// value used to exit the menu.
     // the value can be changed by the sub-class constructor.
 
@@ -44,7 +44,7 @@ public abstract class Menu {
      * @param header The header text of the menu.
      * @param menuItems The list of menu items texts.
      */
-    public Menu(String header, String... menuItems) {
+    public MenuSound(String header, String... menuItems) {
         this.header = header;
         this.menuItems = menuItems;
     }
