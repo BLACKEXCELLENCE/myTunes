@@ -179,7 +179,7 @@ public class DalcPlaylist {
      */
     public void addSongToPlaylist(BEPlaylistSong s) throws SQLServerException, SQLException {
         String sql = ("INSERT INTO PlayListSong (PlayListID, SongID, SeqNo)"
-                + "values (?, ?, (SELECT ISNULL(Max(SeqNo),0)+1 FROM [dbo].[PlayListSong] WHERE PlayListID=?))");
+                + "values (?, ?, (SELECT ISNULL(Max( qNo),0)+1 FROM [dbo].[PlayListSong] WHERE PlayListID=?))");
 
         PreparedStatement ps = DBConnection.getConnection().prepareStatement(sql);
         ps.setInt(1, s.getPlaylistid());
