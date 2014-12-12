@@ -10,7 +10,7 @@ package BE;
  * @author Christopher, Mark, Martin & Rasmus
  */
 public class BESong {
-    
+
     private int id;
     private String title;
     private String artist;
@@ -18,7 +18,7 @@ public class BESong {
     private String categoryId;
     private String filename;
     private String searchWord;
-    
+
     /**
      *
      * @param id
@@ -27,15 +27,15 @@ public class BESong {
      * @param categoryId
      * @param filename
      */
-    public BESong(int id, 
-            String title, 
-            String artist, 
+    public BESong(int id,
+            String title,
+            String artist,
             String categoryId,
-            String filename)
-            
-    {
-        this.id=id; this.title = title; this.artist = artist;
-        this.length = length; this.categoryId = categoryId;
+            String filename) {
+        this.id = id;
+        this.title = title;
+        this.artist = artist;
+        this.categoryId = categoryId;
         this.filename = filename;
     }
 
@@ -43,10 +43,10 @@ public class BESong {
      *
      * @param id
      */
-    public BESong(int id){
-        this.id=id;
+    public BESong(int id) {
+        this.id = id;
     }
-    
+
     /**
      *
      * @param id
@@ -55,9 +55,10 @@ public class BESong {
      */
     public BESong(int id,
             String title,
-            String artist)
-    {
-        this.id=id; this.title=title; this.artist=artist;
+            String artist) {
+        this.id = id;
+        this.title = title;
+        this.artist = artist;
     }
 
     /**
@@ -143,7 +144,7 @@ public class BESong {
     public void setFilename(String filename) {
         this.filename = filename;
     }
-    
+
     /**
      *
      * @return

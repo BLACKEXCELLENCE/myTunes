@@ -11,23 +11,21 @@ import java.sql.Connection;
 
 /**
  *
- * @author Christopher
+ * @author Christopher, Mark, Martin & Rasmus
  */
 public class DBConnection {
-    
+
     private static Connection m_connection = null;
-    
+
     /**
      *
-     * @return
-     * @throws SQLServerException
+     * @return @throws SQLServerException
      */
-    public static Connection getConnection() throws SQLServerException
-    {
+    public static Connection getConnection() throws SQLServerException {
         if (m_connection == null) // first time
         {
             SQLServerDataSource ds = new SQLServerDataSource();
-        
+
             ds.setApplicationName("jdbc:sqlserver://");
             //ds.setServerName("10.211.55.8");
             ds.setServerName("localhost");

@@ -4,12 +4,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
+
 /**
- * 
+ *
  * @author Christopher, Mark, Martin & Rasmus
  */
 public class AudioPlayer {
-
 
     private Player p;
     private Thread w;
@@ -22,63 +22,55 @@ public class AudioPlayer {
      *
      * @param fileName
      */
-    public AudioPlayer(String fileName)
-    {
+    public AudioPlayer(String fileName) {
         m_errorState = true;
         m_errorMessage = "OK";
-  
-        
-            try
-            {
-                p = new Player(new FileInputStream(fileName));
-            } catch (FileNotFoundException ex)
-            {
-                m_errorState = false;
-                m_errorMessage = ex.getMessage();
-            } catch (JavaLayerException ex) {
-                m_errorState = false;
-                m_errorMessage = ex.getMessage();
+
+        try {
+            p = new Player(new FileInputStream(fileName));
+        } catch (FileNotFoundException ex) {
+            m_errorState = false;
+            m_errorMessage = ex.getMessage();
+        } catch (JavaLayerException ex) {
+            m_errorState = false;
+            m_errorMessage = ex.getMessage();
         }
-             
+
     }
 
     /**
-     * 
+     *
      * @void start to play
      */
-    public void startToPlay()
-    {   
+    public void startToPlay() {
         w = new PlayerThread();
-        w.start(); 
+        w.start();
         isPlayingNow = true;
     }
 
-     /**
-     * 
+    /**
+     *
      * @void pause the song
      */
-    public void pause()
-    {
+    public void pause() {
         w.suspend();
         isPlayingNow = false;
     }
-    
-     /**
-     * 
+
+    /**
+     *
      * @void resume the song
      */
-    public void resume()
-    {
+    public void resume() {
         w.resume();
         isPlayingNow = true;
     }
-    
-     /**
-     * 
+
+    /**
+     *
      * @void stop the song
      */
-    public void stop()
-    { 
+    public void stop() {
         w.stop();
         isPlayingNow = false;
     }
@@ -87,39 +79,38 @@ public class AudioPlayer {
      *
      * @return
      */
-    public boolean isValid() 
-    { return m_errorState; }
-    
-    /**
-     *
-     * @return
-     */
-    public String getErrorMessage() 
-    { return m_errorMessage; }
-    
-    /**
-     *
-     * @return
-     */
-    public boolean isPlaying()
-    { return isPlayingNow; }
+    public boolean isValid() {
+        return m_errorState;
+    }
 
-    private class PlayerThread extends Thread
-    {
-        
+    /**
+     *
+     * @return
+     */
+    public String getErrorMessage() {
+        return m_errorMessage;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean isPlaying() {
+        return isPlayingNow;
+    }
+
+    private class PlayerThread extends Thread {
+
         @Override
-        public void run()
-        {
-            try
-            {
+        public void run() {
+            try {
                 p.play();
-                
-            } catch (JavaLayerException ex)
-            {
+
+            } catch (JavaLayerException ex) {
                 m_errorState = false;
                 m_errorMessage = ex.getMessage();
             }
         }
-        
+
     }
 }

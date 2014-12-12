@@ -7,19 +7,21 @@ package BE;
 
 /**
  *
- * @author Christopher
+ * @author Christopher, Mark, Martin & Rasmus
  */
 public class BEPlaylistSong {
+
     private int playlistid;
     private int songid;
 
     /**
-     * 
+     *
      * @param playlistid
-     * @param songid 
+     * @param songid
      */
-    public BEPlaylistSong (int playlistid, int songid){
-        this.playlistid=playlistid; this.songid=songid;
+    public BEPlaylistSong(int playlistid, int songid) {
+        this.playlistid = playlistid;
+        this.songid = songid;
     }
 
     /**

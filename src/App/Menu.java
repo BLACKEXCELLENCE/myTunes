@@ -5,9 +5,7 @@
  */
 package App;
 
-import BE.BEPlaylist;
-import BE.BEPlaylistSong;
-import BE.BESong;
+import BE.*;
 import BLL.*;
 import java.util.Scanner;
 

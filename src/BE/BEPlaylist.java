@@ -10,6 +10,7 @@ package BE;
  * @author Christopher, Mark, Martin & Rasmus
  */
 public class BEPlaylist {
+
     private int id;
     private String name;
     private int songid;
@@ -20,35 +21,37 @@ public class BEPlaylist {
      * @param id
      * @param name
      */
-    public BEPlaylist(int id, String name)
-    { this.id = id; this.name = name; }
-    
+    public BEPlaylist(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     /**
      *
      * @param id
      */
-    public BEPlaylist(int id){
-        this.id=id;
+    public BEPlaylist(int id) {
+        this.id = id;
     }
-    
+
     /**
      *
      * @param name
      */
-    public BEPlaylist(String name){
-        this.name=name;
+    public BEPlaylist(String name) {
+        this.name = name;
     }
-    
-    
+
     /**
      *
      * @param id
      * @param songid
      */
-    public BEPlaylist(int id, int songid){
-        this.id=id; this.songid=songid;
+    public BEPlaylist(int id, int songid) {
+        this.id = id;
+        this.songid = songid;
     }
-    
+
     /**
      * @return the id
      */
@@ -104,5 +107,5 @@ public class BEPlaylist {
     public void setPlaylistid(int playlistid) {
         this.playlistid = playlistid;
     }
-    
+
 }

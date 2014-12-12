@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class SoundControlMenu extends Menu {
 
     AudioPlayer p;
-     String fileA = "";
+    String fileA = "";
 
     /**
      *
@@ -21,14 +21,14 @@ public class SoundControlMenu extends Menu {
                 "|Resume            |",
                 "|Stop              |",
                 "|Now playing       |");
-          }
+    }
 
-     /**
+    /**
      * @param option
      * @void prints the SoundControlMenu
      */
     @Override
-    protected void doAction(int option)  {
+    protected void doAction(int option) {
         switch (option) {
             case 0:
                 if (p != null) {

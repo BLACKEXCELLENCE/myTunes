@@ -28,24 +28,24 @@ public class BLLPlaylist {
         m_songs = null;
     }
 
-    
-     /**
-     * 
+    /**
+     *
      * @return all playlists
      * @throws java.lang.Exception
      */
     public ArrayList<BEPlaylist> getAllPlaylists() throws Exception {
         try {
-            if (m_songs == null)
+            if (m_songs == null) {
                 m_songs = ds.getAllPlaylists();
+            }
             return m_songs;
         } catch (SQLException ex) {
-            throw new Exception("Kunne ikke hente alle sange..."); 
-        }  
+            throw new Exception("Could not get songs...");
+        }
     }
-    
-     /**
-     * 
+
+    /**
+     *
      * @param aPlaylist
      * @throws java.lang.Exception
      * @void delete a playlist
@@ -54,12 +54,12 @@ public class BLLPlaylist {
         try {
             ds.deletePlaylist(aPlaylist);
         } catch (SQLException ex) {
-          throw new Exception("kunne ikke slette playlist " + aPlaylist.getId());
+            throw new Exception("Could not get playlist " + aPlaylist.getId());
         }
     }
-    
-     /**
-     * 
+
+    /**
+     *
      * @param aPlaylist
      * @throws java.lang.Exception
      * @void create a playlist
@@ -68,12 +68,12 @@ public class BLLPlaylist {
         try {
             ds.createPlaylist(aPlaylist);
         } catch (SQLException ex) {
-          throw new Exception("kunne ikke oprette playlist " + aPlaylist.getName());
+            throw new Exception("Could not create playlist" + aPlaylist.getName());
         }
     }
-    
-     /**
-     * 
+
+    /**
+     *
      * @param aPlaylist
      * @throws java.lang.Exception
      * @void delete a song from a playlist
@@ -82,12 +82,12 @@ public class BLLPlaylist {
         try {
             ds.deleteFromPlaylist(aPlaylist);
         } catch (SQLException ex) {
-          throw new Exception("kunne ikke slette sangen fra playlisten " + aPlaylist.getName());
+            throw new Exception("Could not delete the song from the playlist" + aPlaylist.getName());
         }
     }
-    
-     /**
-     * 
+
+    /**
+     *
      * @param aPlaylist
      * @throws java.lang.Exception
      * @void add a song to a playlist
@@ -96,9 +96,8 @@ public class BLLPlaylist {
         try {
             ds.addSongToPlaylist(aPlaylist);
         } catch (SQLException ex) {
-          throw new Exception("kunne ikke indsætte sangen i playlisten " + aPlaylist.getSongid());
+            throw new Exception("Could not insert the song into the playlist" + aPlaylist.getSongid());
         }
     }
-    
-    
+
 }
