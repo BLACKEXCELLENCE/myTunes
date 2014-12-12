@@ -21,7 +21,7 @@ public class Menu {
 
     /**
      *
-     * @return
+     * @return m_instance
      */
     static public Menu getInstance() {
         if (m_instance == null) {
@@ -49,8 +49,7 @@ public class Menu {
     };
 
     /**
-     *
-     * @void prints out the main menu
+     *  Prints out the main menu.
      */
     private void show() {
         int count = 0;
@@ -76,7 +75,7 @@ public class Menu {
     }
 
     /**
-     * @void Prints out the song menu
+     * Prints out the song menu executes the menu
      */
     private void songMenu() {
         System.out.println("       Song Menu       ");
@@ -103,8 +102,7 @@ public class Menu {
     }
 
     /**
-     *
-     * @void prints out the song edit menu and executes the menu
+     * Prints out the song edit menu and executes the menu
      */
     private void songEditMenu() {
         System.out.println("     Edit Menu    ");
@@ -127,8 +125,7 @@ public class Menu {
     }
 
     /**
-     *
-     * @void prints out the playlist menu and executes the menu
+     * Prints out the playlist menu and executes the menu
      */
     private void playlistMenu() {
         System.out.println("           Playlists Menu          ");
@@ -155,7 +152,7 @@ public class Menu {
     }
 
     /**
-     * @void Prints out the playlist edit menu
+     * Prints out the playlist edit menu executes the menu
      */
     private void playlistEditMenu() {
         System.out.println("             Edit Menu             ");
@@ -186,8 +183,7 @@ public class Menu {
     }
 
     /**
-     *
-     * @void executes the main menu
+     * Executes the main menu
      */
     private void executeMenu(MenuItem value) {
 
@@ -210,8 +206,7 @@ public class Menu {
     }
 
     /**
-     *
-     * @void prints out all songs
+     * Prints out all songs
      */
     public void showSongs() {
 
@@ -231,7 +226,7 @@ public class Menu {
 
     /**
      *
-     * @void prints out all playlists
+     * Prints out all playlists
      */
     private void showPlaylists() {
         try {
@@ -248,8 +243,7 @@ public class Menu {
     }
 
     /**
-     *
-     * @void prints out all songs in a playlist
+     * Prints out all songs in a playlist
      */
     private void getAllByPlaylist() {
         try {
@@ -270,16 +264,14 @@ public class Menu {
     }
 
     /**
-     *
-     * @void quits the application
+     * Quits the application
      */
     private void quit() {
         running = false;
     }
 
     /**
-     *
-     * @void starts the application
+     * Starts the application
      */
     public void run() {
         while (running) {
@@ -288,17 +280,14 @@ public class Menu {
     }
 
     /**
-     *
-     * @void create a new song
+     * Create a new song
      */
     private void createSong() {
         try {
             String title;
             String artist;
             String categoryId;
-            int length;
             String filename;
-            String duration;
             System.out.println("Enter title:        ");
             title = Keyboard.readString();
             System.out.println("Enter artist:       ");
@@ -307,30 +296,25 @@ public class Menu {
             categoryId = Keyboard.readString();
             System.out.println("Enter file name:    ");
             filename = Keyboard.readString();
-            System.out.println("Enter duration:     ");
-            length = Keyboard.readInt();
 
             BESong aSong = new BESong(0, title, artist, categoryId, filename);
 
             BLLSong ds = new BLLSong();
             ds.createSong(aSong);
-            //ds.createSong2(aSong);
         } catch (Exception ex) {
             System.out.println("Could not insert song - " + ex.getMessage());
         }
     }
 
     /**
-     *
-     * @void starts the sound control menu
+     * Starts the sound control menu
      */
     static void soundControl() {
         new SoundControlMenu().run();
     }
 
     /**
-     *
-     * @void delete a song
+     * Delete a song
      */
     private void deleteSong() {
         try {
@@ -347,8 +331,7 @@ public class Menu {
     }
 
     /**
-     *
-     * @void search all songs
+     * Search all songs
      */
     private void searchSongs() {
         try {
@@ -368,8 +351,7 @@ public class Menu {
     }
 
     /**
-     *
-     * @void delete a playlist
+     * Delete a playlist
      */
     private void deletePlaylist() {
         try {
@@ -388,8 +370,7 @@ public class Menu {
     }
 
     /**
-     *
-     * @void create a playlist
+     * Create a playlist
      */
     private void createPlaylist() {
         try {
@@ -407,8 +388,7 @@ public class Menu {
     }
 
     /**
-     *
-     * @void delete a song from a playlist
+     * Delete a song from a playlist
      */
     private void deleteFromPlaylist() {
         try {
@@ -431,8 +411,7 @@ public class Menu {
     }
 
     /**
-     *
-     * @void add a song to a playlist
+     * Add a song to a playlist
      */
     private void addSongToPlaylist() {
         try {
