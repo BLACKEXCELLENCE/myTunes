@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Christopher, Mark, Martin & Rasmus.
+ * @author Christopher, Mark, Martin & Rasmus
  */
 public class Menu {
 
@@ -34,11 +34,9 @@ public class Menu {
 
     enum MenuItem {
 
-        SHOW_SONGS("|Show all songs    |"),
-        SEARCH_SONGS("|Search            |"),
+        SONGS("|Songs             |"),
         PLAYLISTS("|Playlists         |"),
         PLAY_SONGS("|Play songs        |"),
-        EDIT_SONGS("|Edit songs        |"),
         QUIT("|Quit              |");
 
         private final String description;
@@ -80,15 +78,42 @@ public class Menu {
     }
 
     /**
+     * @void Prints out the song menu
+     */
+    private void songMenu() {
+        System.out.println("       Song Menu       ");
+        System.out.println("1. |Show all songs    |");
+        System.out.println("2. |Search songs      |");
+        System.out.println("3. |Edit songs        |");
+        System.out.println("0. |Return            |");
+        int option;
+        option = new Scanner(System.in).nextInt();
+        switch (option) {
+            case 1:
+                showSongs();
+                break;
+            case 2:
+                searchSongs();
+                break;
+            case 3:
+                songEditMenu();
+                break;
+            case 0:
+                show();
+                break;
+        }
+    }
+
+    /**
      *
      * @void prints out the song edit menu and executes the menu
      */
-    private void editMenu() {
-
+    private void songEditMenu() {
+        System.out.println("     Edit Menu    ");
         System.out.println("1. |Create a song|");
         System.out.println("2. |Delete a song|");
         System.out.println("0. |Return|");
-        int option = 0;
+        int option;
         option = new Scanner(System.in).nextInt();
         switch (option) {
             case 1:
@@ -98,7 +123,7 @@ public class Menu {
                 deleteSong();
                 break;
             case 0:
-                show();
+                songMenu();
                 break;
         }
     }
@@ -109,15 +134,11 @@ public class Menu {
      */
     private void playlistMenu() {
         System.out.println("           Playlists Menu          ");
-        System.out.println("   --------------------------------");
         System.out.println("1. |Show all playlists            |");
         System.out.println("2. |Show songs in a playlist      |");
-        System.out.println("3. |Create a playlist             |");
-        System.out.println("4. |Add song to a playlist        |");
-        System.out.println("5. |Delete a playlist             |");
-        System.out.println("6. |Delete a song from a playlist |");
+        System.out.println("3. |Edit playlists                |");
         System.out.println("0. |Return                        |");
-        int option = 0;
+        int option;
         option = new Scanner(System.in).nextInt();
         switch (option) {
             case 1:
@@ -127,19 +148,41 @@ public class Menu {
                 getAllByPlaylist();
                 break;
             case 3:
-                createPlaylist();
-                break;
-            case 4:
-                addSongToPlaylist();
-                break;
-            case 5:
-                deletePlaylist();
-                break;
-            case 6:
-                deleteFromPlaylist();
+                playlistEditMenu();
                 break;
             case 0:
                 show();
+                break;
+        }
+    }
+
+    /**
+     * @void Prints out the playlist edit menu
+     */
+    private void playlistEditMenu() {
+        System.out.println("             Edit Menu             ");
+        System.out.println("1. |Create a playlist             |");
+        System.out.println("2. |Add song to a playlist        |");
+        System.out.println("3. |Delete a playlist             |");
+        System.out.println("4. |Delete a song from a playlist |");
+        System.out.println("0. |Return                        |");
+        int option;
+        option = new Scanner(System.in).nextInt();
+        switch (option) {
+            case 1:
+                createPlaylist();
+                break;
+            case 2:
+                addSongToPlaylist();
+                break;
+            case 3:
+                deletePlaylist();
+                break;
+            case 4:
+                deleteFromPlaylist();
+                break;
+            case 0:
+                playlistMenu();
                 break;
         }
     }
@@ -151,20 +194,14 @@ public class Menu {
     private void executeMenu(MenuItem value) {
 
         switch (value) {
-            case SHOW_SONGS:
-                showSongs();
-                break;
-            case SEARCH_SONGS:
-                searchSongs();
+            case SONGS:
+                songMenu();
                 break;
             case PLAYLISTS:
                 playlistMenu();
                 break;
             case PLAY_SONGS:
                 soundControl();
-                break;
-            case EDIT_SONGS:
-                editMenu();
                 break;
             case QUIT:
                 quit();
