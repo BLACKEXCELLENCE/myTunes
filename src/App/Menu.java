@@ -6,6 +6,7 @@
 package App;
 
 import BE.BEPlaylist;
+import BE.BEPlaylistSong;
 import BE.BESong;
 import BLL.*;
 import java.util.Scanner;
@@ -409,7 +410,7 @@ public class Menu {
             showSongs();
             songID = Keyboard.readInt();
 
-            BEPlaylist aPlaylist = new BEPlaylist(playlistid, songID);
+            BEPlaylistSong aPlaylist = new BEPlaylistSong(playlistid, songID);
             BLLPlaylist ds = new BLLPlaylist();
             ds.addSongToPlaylist(aPlaylist);
 

@@ -1,6 +1,7 @@
 package DALC;
 
 import BE.BEPlaylist;
+import BE.BEPlaylistSong;
 import static DALC.DBConnection.getConnection;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
@@ -181,7 +182,7 @@ public class DalcPlaylist {
      * @throws java.sql.SQLException
      * @void add a song to a playlist
      */
-        public void addSongToPlaylist(BEPlaylist s) throws SQLServerException, SQLException
+        public void addSongToPlaylist(BEPlaylistSong s) throws SQLServerException, SQLException
     {   
         String sql = ("INSERT INTO PlayListSong (PlayListID, SongID, SeqNo)"
                 + "values (?, ?, (SELECT ISNULL(Max(SeqNo),0)+1 FROM [dbo].[PlayListSong] WHERE PlayListID=?))"); 

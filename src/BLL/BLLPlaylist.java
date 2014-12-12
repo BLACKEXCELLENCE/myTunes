@@ -6,6 +6,7 @@
 package BLL;
 
 import BE.BEPlaylist;
+import BE.BEPlaylistSong;
 import DALC.DalcPlaylist;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -91,11 +92,11 @@ public class BLLPlaylist {
      * @throws java.lang.Exception
      * @void add a song to a playlist
      */
-    public void addSongToPlaylist(BEPlaylist aPlaylist) throws Exception {
+    public void addSongToPlaylist(BEPlaylistSong aPlaylist) throws Exception {
         try {
             ds.addSongToPlaylist(aPlaylist);
         } catch (SQLException ex) {
-          throw new Exception("kunne ikke indsætte sangen i playlisten " + aPlaylist.getName());
+          throw new Exception("kunne ikke indsætte sangen i playlisten " + aPlaylist.getSongid());
         }
     }
     
