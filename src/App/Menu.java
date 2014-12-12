@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Christopher, Mark, Martin & Rasmus
+ * @author Christopher, Mark, Martin & Rasmus.
  */
 public class Menu {
 
@@ -375,8 +375,8 @@ public class Menu {
      *
      * @void delete a song from a playlist
      */
-    private void deleteFromPlaylist(){
-    try {
+    private void deleteFromPlaylist() {
+        try {
             int songid;
             int id;
             showPlaylists();
@@ -385,7 +385,7 @@ public class Menu {
             getAllByPlaylist();
             System.out.println("Enter id of song to delete:    ");
             songid = Keyboard.readInt();
-            
+
             BEPlaylist aPlaylist = new BEPlaylist(id, songid);
             BLLPlaylist ds = new BLLPlaylist();
             ds.deleteFromPlaylist(aPlaylist);
@@ -394,15 +394,15 @@ public class Menu {
             System.out.println("Could not delete song from playlist - " + ex.getMessage());
         }
     }
-    
-        /**
+
+    /**
      *
      * @void add a song to a playlist
      */
     private void addSongToPlaylist() {
         try {
-           int playlistid;
-           int songID;
+            int playlistid;
+            int songID;
             System.out.println("Enter Playlist ID:    ");
             showPlaylists();
             playlistid = Keyboard.readInt();
